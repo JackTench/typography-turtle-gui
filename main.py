@@ -1,23 +1,30 @@
+import tkinter as tk
 import pro
 
-name = str(input("Feed input: "))
+def end():
+    exit()
 
-pro.display(name)
+def go():
+    textin = txtEntry.get()
+    if textin == "":
+        text = "No Input"
+    elif len(textin) > 15:
+        text = "Too Long"
+    else:
+        text = textin
+    win.destroy()
+    pro.display(text)
 
+win = tk.Tk()
+win.title("Turtle Typography!")
 
-# all letters in 5x3 ratio and 100x60 resolution
-# least count of radius of curve is 10 degrees
+txtEntry = tk.Entry(width = 15)
+txtEntry.pack()
 
-'''
-limitations:
-program is limited to drawing
-15 characters including spaces
+btnGo = tk.Button(text = "Go!", command = go)
+btnGo.pack()
 
-alphabets, numbers, special 
-characters can be drawn
+btnExit = tk.Button(text = "Quit", command = end)
+btnExit.pack()
 
-special characters include
-space, dash and dot
-
-alphabets are drawn in uppercase only
-'''
+win.mainloop()
